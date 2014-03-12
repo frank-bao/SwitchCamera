@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NPViewController : UIViewController
-
+- (IBAction)click:(id)sender;
 @end

@@ -8,7 +8,7 @@
 
 #import "NPViewController.h"
 
-@interface NPViewController ()
+@interface NPViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
 
@@ -26,4 +26,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)click:(id)sender;
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+            UIImagePickerController *albums = [[UIImagePickerController alloc] init];
+            albums.sourceType = UIImagePickerControllerSourceTypeCamera;
+            albums.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+            albums.delegate = self;
+        
+            UIImageView *imageview =  [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+        
+            [self presentViewController:albums animated:YES completion:^{
+                [albums.view addSubview:imageview];
+                imageview.backgroundColor = [UIColor redColor];
+
+            }];
+    }else{
+       
+    }
+}
 @end
